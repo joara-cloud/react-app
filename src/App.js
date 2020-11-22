@@ -2,32 +2,43 @@ import React from 'react';
 
 const foodILike = [
   {
+    id: 1,
     name: 'kimchi',
-    price: 9000
+    price: 9000,
+    ratind: 5
   },
   {
+    id: 2,
     name: 'ramen',
-    price: 4500
+    price: 4500,
+    ratind: 3
   },
   {
+    id: 3,
     name: 'pizza',
-    price: 21900
+    price: 21900,
+    ratind: 4
   }
 ];
 
-foodILike.map(dish => {
-  console.log(dish.name);
-})
-
 function App() {
-  return ( // 반환값이 많아지면 소괄호 감싸야함. 지우지않게 주의
+  return (
     <div>
-      <Food />
+      {
+        foodILike.map( (dish) => (
+          <Food name={dish.name} price={dish.price} key={dish.id} />
+        ))
+      }
     </div>
   );
 }
-function Food() {
-	return <h3> sdfsdf </h3>;
+function Food({ name, price }) {
+	return (
+    <div>
+      <h3>I like {name}</h3>
+      <p>price : {price}</p>
+    </div>
+  );
 }
 
 export default App;
